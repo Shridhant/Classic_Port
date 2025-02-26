@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "title": "Getting Started with Next.js",
+      "excerpt": "Learn how to build modern web applications with Next.js, a popular React framework.",
+      "date": "2023-05-15"
+    },
+    {
+      "id": 2,
+      "title": "The Power of Tailwind CSS",
+      "excerpt": "Discover how Tailwind CSS can streamline your styling workflow and improve productivity.",
+      "date": "2023-06-02"
+    },
+    {
+      "id": 3,
+      "title": "Mastering TypeScript",
+      "excerpt": "Explore the benefits of TypeScript and how it can enhance your JavaScript development experience.",
+      "date": "2023-06-20"
+    }
+  ]
+  
+  
