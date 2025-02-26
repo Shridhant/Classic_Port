@@ -1,19 +1,56 @@
-"use client";
-
-import type React from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Twitter, Github, Linkedin, Send, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Home() {
+  // Animation variants for container with blur effect
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+        default: { type: "spring" },
+        opacity: { ease: "linear" },
+      },
+    },
+  };
+
+  // Animation variants for individual items with blur
+  const item = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      filter: "blur(8px)",
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.5,
+        filter: { duration: 0.7 },
+      },
+    },
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      style={{ willChange: "filter" }}
     >
-      <header className="text-left mb-8">
+      <motion.header
+        variants={item}
+        initial="hidden"
+        animate="show"
+        className="text-left mb-8"
+        style={{ willChange: "filter" }}
+      >
         <img
           src="/dp.jpeg"
           alt="Profile picture"
@@ -23,63 +60,102 @@ export default function Home() {
         />
         <h1 className="text-2xl font-bold mb-2">Hello!</h1>
         <p className="text-gray-600 dark:text-gray-400 mb-4">
-          I'm Fayaz, I work as a software, product engineer and designer from
-          Bengaluru, India. I specialize in building web applications and sites
-          using Javascript, React, Vue & Node. I've procrastinated building this
-          website for years but finally it's here, I've carved out my own little
-          nook on the internet to share my silly experiments, nifty projects,
-          and thoughts (mostly about tech and design).
-        </p>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
-          By day, I'm a Product Engineer at{" "}
+          I'm Kevipulie David Iralu, I'm a Python Developer at{" "}
           <a
             href="#"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
-            Chatwoot (YC S21)
+            Infosys
+          </a>{" "}
+          based in Melbourne, Australia. I specialize in building innovative
+          solutions in the GIS, EdTech, and telecommunications industries. My
+          technical expertise spans across Python, JavaScript, and React.js,
+          with hands-on experience in Docker and back-end web development. By
+          day, I work at Infosys, where I focus on delivering high-quality
+          software solutions and contributing to various projects that drive
+          efficiency and performance. In my spare time, I manage the technical
+          aspects of an LMS at{" "}
+          <a
+            href="#"
+            className="text-blue-600 dark:text-blue-700 hover:underline"
+          >
+            NagaEd
           </a>
-          , and by night (and weekends), I'm busy tinkering with some random
-          tool or app that I am building.
+          , ensuring that our Learning and Engagement team has the tools they
+          need to succeed.
         </p>
-      </header>
+      </motion.header>
 
-      <section className="mb-8">
-        <h2 className="text-lg font-semibold mb-4">FIND ME ON</h2>
+      <motion.section
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="mb-8"
+        style={{ willChange: "filter" }}
+      >
+        <motion.h2
+          variants={item}
+          className="text-lg font-semibold mb-4"
+          style={{ willChange: "filter" }}
+        >
+          FIND ME ON
+        </motion.h2>
         <div className="space-y-2">
-          <SocialLink
-            href="#"
-            icon={<Twitter className="w-5 h-5" />}
-            label="Twitter"
-          />
-          <SocialLink
-            href="#"
-            icon={<Github className="w-5 h-5" />}
-            label="GitHub"
-          />
-          <SocialLink
-            href="#"
-            icon={<Linkedin className="w-5 h-5" />}
-            label="LinkedIn"
-          />
-          <SocialLink
-            href="#"
-            icon={<Send className="w-5 h-5" />}
-            label="Telegram"
-          />
+          <motion.div variants={item} style={{ willChange: "filter" }}>
+            <SocialLink
+              href="#"
+              icon={<Twitter className="w-5 h-5" />}
+              label="Twitter"
+            />
+          </motion.div>
+          <motion.div variants={item} style={{ willChange: "filter" }}>
+            <SocialLink
+              href="#"
+              icon={<Github className="w-5 h-5" />}
+              label="GitHub"
+            />
+          </motion.div>
+          <motion.div variants={item} style={{ willChange: "filter" }}>
+            <SocialLink
+              href="#"
+              icon={<Linkedin className="w-5 h-5" />}
+              label="LinkedIn"
+            />
+          </motion.div>
+          <motion.div variants={item} style={{ willChange: "filter" }}>
+            <SocialLink
+              href="#"
+              icon={<Send className="w-5 h-5" />}
+              label="Telegram"
+            />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      <section>
-        <h2 className="text-lg font-semibold mb-4">LATEST PROJECTS</h2>
+      <motion.section
+        variants={container}
+        initial="hidden"
+        animate="show"
+        style={{ willChange: "filter" }}
+      >
+        <motion.h2
+          variants={item}
+          className="text-lg font-semibold mb-4"
+          style={{ willChange: "filter" }}
+        >
+          LATEST PROJECTS
+        </motion.h2>
         <div className="space-y-2">
-          <ProjectLink
-            href="#"
-            icon={<FileText className="w-5 h-5" />}
-            label="Feedbackjar"
-            description="Open source feedback, roadmaps and changelogs"
-          />
+          <motion.div variants={item} style={{ willChange: "filter" }}>
+            <ProjectLink
+              href="#"
+              icon={<FileText className="w-5 h-5" />}
+              label="Feedbackjar"
+              description="Open source feedback, roadmaps and changelogs"
+            />
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
     </motion.div>
   );
 }

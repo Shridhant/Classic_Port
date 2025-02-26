@@ -2,7 +2,26 @@ import { motion } from "framer-motion";
 // import { Link } from "react-router-dom";
 import blogData from "../data/blogs.json";
 console.log(blogData);
+
 export default function Blogs() {
+  // Animation variants for container
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  // Animation variants for individual items
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -10,12 +29,26 @@ export default function Blogs() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-2xl font-bold mb-4">Blogs</h1>
-      <div className="space-y-6">
+      <motion.h1
+        variants={item}
+        initial="hidden"
+        animate="show"
+        className="text-2xl font-bold mb-4"
+      >
+        Blogs
+      </motion.h1>
+      <motion.div
+        className="space-y-6"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
         {blogData.map((blog) => (
-          <BlogItem key={blog.id} {...blog} />
+          <motion.div key={blog.id} variants={item}>
+            <BlogItem {...blog} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }

@@ -2,8 +2,6 @@ import React, { ReactNode } from "react";
 import "../index.css";
 import Navigation from "../components/Navigation";
 
-import { AnimatePresence } from "framer-motion";
-
 interface PageLayoutProps {
   children: ReactNode;
 }
@@ -15,9 +13,8 @@ const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
         <div className="flex justify-between items-center mb-10">
           <Navigation />
         </div>
-        <AnimatePresence mode="wait" initial={false}>
-          {children}
-        </AnimatePresence>
+
+        {children}
       </div>
     </div>
   );

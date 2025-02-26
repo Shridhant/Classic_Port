@@ -1,5 +1,4 @@
 import type React from "react";
-
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -16,21 +15,43 @@ import {
 } from "lucide-react";
 
 export default function Projects() {
+  const FADE_UP_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      initial="hidden"
+      animate="show"
+      viewport={{ once: true }}
+      variants={{
+        hidden: {},
+        show: {
+          transition: {
+            default: { type: "spring" },
+            opacity: { ease: "linear" },
+            staggerChildren: 0.15, // Staggering effect for child elements
+          },
+        },
+      }}
     >
-      <h1 className="text-2xl font-bold mb-4">Projects</h1>
-      <p className="text-gray-600 dark:text-gray-400 mb-8">
+      <motion.h1
+        variants={FADE_UP_ANIMATION_VARIANTS}
+        className="text-2xl font-bold mb-4"
+      >
+        Projects
+      </motion.h1>
+      <motion.p
+        variants={FADE_UP_ANIMATION_VARIANTS}
+        className="text-gray-600 dark:text-gray-400 mb-8"
+      >
         I've worked on tons of little projects over the years but these are the
         ones that I'm most proud of. Many of them are open-source, so if you see
         something that piques your interest, check out the code and contribute
         if you have ideas for how it can be improved.
-      </p>
-      <div className="space-y-6">
+      </motion.p>
+      <motion.div variants={FADE_UP_ANIMATION_VARIANTS} className="space-y-6">
         <ProjectItem
           icon={<FileText className="w-6 h-6" />}
           title="Feedbackjar"
@@ -81,7 +102,7 @@ export default function Projects() {
           title="Onelink"
           description="An experimental link-in-bio tool, where the data lives in the URL"
         />
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -95,19 +116,27 @@ function ProjectItem({
   title: string;
   description: string;
 }) {
+  const FADE_UP_ANIMATION_VARIANTS = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
+  };
   return (
-    <Link to="#" className="flex items-start space-x-4 group">
-      <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-        {icon}
-      </div>
-      <div>
-        <h2 className="font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          {title}
-        </h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          {description}
-        </p>
-      </div>
-    </Link>
+    <motion.div variants={FADE_UP_ANIMATION_VARIANTS}>
+      {" "}
+      {/* Apply animation here */}
+      <Link to="#" className="flex items-start space-x-4 group">
+        <div className="bg-gray-100 dark:bg-gray-800 p-2 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
+          {icon}
+        </div>
+        <div>
+          <h2 className="font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {title}
+          </h2>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {description}
+          </p>
+        </div>
+      </Link>
+    </motion.div>
   );
 }
