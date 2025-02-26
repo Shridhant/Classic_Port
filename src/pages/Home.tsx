@@ -44,21 +44,6 @@ export default function Home() {
       </header>
 
       <section className="mb-8">
-        <Link
-          to="https://supersaas.dev"
-          className="block bg-black text-white dark:bg-white dark:text-black p-4 rounded-lg"
-        >
-          <h2 className="text-xl font-bold mb-2">
-            Build & ship full stack apps with Nuxt 3
-          </h2>
-          <p className="text-sm">
-            The saas starter kit with Auth, Payments, Database, Storage, Emails
-            and a lot more.
-          </p>
-        </Link>
-      </section>
-
-      <section className="mb-8">
         <h2 className="text-lg font-semibold mb-4">FIND ME ON</h2>
         <div className="space-y-2">
           <SocialLink
@@ -85,7 +70,7 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-lg font-semibold mb-4">FEATURED PROJECTS</h2>
+        <h2 className="text-lg font-semibold mb-4">LATEST PROJECTS</h2>
         <div className="space-y-2">
           <ProjectLink
             href="#"

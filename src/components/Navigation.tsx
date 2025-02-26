@@ -1,6 +1,6 @@
 import type React from "react";
 import { Link } from "react-router-dom";
-import { Home, FileText, Briefcase, User, Cloud, BookOpen } from "lucide-react";
+import { Home, FileText, Briefcase, User } from "lucide-react";
 
 export default function Navigation() {
   return (
